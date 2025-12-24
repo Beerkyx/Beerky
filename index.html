@@ -32,16 +32,18 @@ let index = 0;
 const text = document.getElementById("text");
 
 function showSentence() {
+  if (index >= sentences.length) {
+    return;
+  }
+
   text.textContent = sentences[index];
+
   setTimeout(() => {
     text.textContent = "";
-    index = (index + 1) % sentences.length;
+    index++;
+    showSentence();
   }, 5000);
 }
 
 showSentence();
-setInterval(showSentence, 5000);
 </script>
-
-</body>
-</html>
