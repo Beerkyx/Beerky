@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>ข้อความเปลี่ยนทุก 5 วินาที</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-size: 32px;
+      font-family: sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+<div id="text"></div>
+
+<script>
+const sentences = [
+  "ประโยคที่หนึ่ง",
+  "ประโยคที่สอง",
+  "ประโยคที่สาม",
+  "ประโยคที่สี่"
+];
+
+let index = 0;
+const text = document.getElementById("text");
+
+function showSentence() {
+  text.textContent = sentences[index];
+  setTimeout(() => {
+    text.textContent = "";
+    index = (index + 1) % sentences.length;
+  }, 5000);
+}
+
+showSentence();
+setInterval(showSentence, 5000);
+</script>
+
+</body>
+</html>
